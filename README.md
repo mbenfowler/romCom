@@ -14,7 +14,7 @@ Interested in developing more on this webapp? Here are the steps to get started:
 2. Open the webapp locally by `open index.html`
 
 ### Preview of App:
-![](assets/ReadMeScreenshot.png) 
+![](assets/Preview.gif)
 
 ### Context:
 We had 5 days to complete this project. We are in the Turing Front End Module 1, Cohort 2303. We completed one iteration per day, which left time for refactoring and adding extra features on the last day.
@@ -24,7 +24,6 @@ We had 5 days to complete this project. We are in the Turing Front End Module 1,
 - [Matt](https://github.com/mbenfowler)
 
 ### Learning Goals:
-[//]: <> (What were the learning goals of this project? What tech did you work with?)
 1. Write clean, DRY JavaScript
     - Build out functionality using functions that show trends toward SRP and purity
     - Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
@@ -36,7 +35,6 @@ We had 5 days to complete this project. We are in the Turing Front End Module 1,
     - Ensure all team members are able to be heard and contribute throughout the project
 
 ### Wins + Challenges:
-[//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
 #### Wins:
 1. IT WORKS!!!!!!
 2. Communication - as partners, we communicated our time availablity and stuck to our norming contract.
