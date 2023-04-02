@@ -1,43 +1,47 @@
-# RomCom
-
-A boilerplate repo. 
-
-## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
-
-You will not need to worry about importing/exporting the arrays from the data.js file because they are linked via the script in the `index.html` file.  
-
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
-
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # RomCom  
 
 ### Abstract:
-[//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
+There's not enough romance novels in the world! We have created a random generator webapp to satisfy this market need. 
+#### Features:
+- Have a romance novel cover idea? No problem! Just go to the "Make Your Own Cover" page and fill out the form!
+- No creative ideas? Just hit the "Show Random Cover" button!
+- Like the cover you generated? Just hit the "Save Cover" button and view all your romance novel dreams by clicking the "View Saved Covers" button!
+- Almost like what you see? You can edit each individual element (cover, title, tagline) by clicking and editing in your own ideas!
 
 ### Installation Instructions:
-[//]: <> (What steps does a person have to take to get your app cloned down and running?)
+Interested in developing more on this webapp? Here are the steps to get started:
+1. Go to your terminal and `git clone git@github.com:CaliHam/romcom.git`
+2. Open the webapp locally by `open index.html`
 
 ### Preview of App:
-[//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
+![](assets/ReadMeScreenshot.png) 
 
 ### Context:
-[//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
+We had 5 days to complete this project. We are in the Turing Front End Module 1, Cohort 2303. We completed one iteration per day, which left time for refactoring and adding extra features on the last day.
 
 ### Contributors:
-[//]: <> (Who worked on this application? Link to their GitHubs.)
+- [Calli](https://github.com/CaliHam)
+- [Matt](https://github.com/mbenfowler)
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
+1. Write clean, DRY JavaScript
+    - Build out functionality using functions that show trends toward SRP and purity
+    - Manipulate the page after it has loaded adding, removing, and updating elements on the DOM
+2. Explore the connection between HTML, CSS, and JavaScript
+    - Practice reading, understanding, and using provided code
+3. Write code collaboratively
+    - Document changes with atomic commits & thorough code reviews
+    - Communicate, troubleshoot, and plan effectively as a team
+    - Ensure all team members are able to be heard and contribute throughout the project
 
 ### Wins + Challenges:
 [//]: <> (What are 2-3 wins you have from this project? What were some challenges you faced - and how did you get over them?)
+#### Wins:
+1. IT WORKS!!!!!!
+2. Communication - as partners, we communicated our time availablity and stuck to our norming contract.
+3. Project grooming - making tickets and prioritizing.
+
+#### Challenges:
+1. Merge Conflicts - new concept that we walked through together to ensure successful resolution.
+2. Balancing time between writing code, refactoring, and learning new concepts entirely (.innerHTML, try...catch, prompt, .tagName, new URL(), event.preventDefault()).
