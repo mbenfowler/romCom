@@ -54,14 +54,20 @@ window.onload = (event) => {
   editableCoverFields.forEach((element) => {
     element.addEventListener('click', function () {
       getNewRandomCoverItem(element);
+      assignNewCoverID();
     });
     element.addEventListener('dblclick', function () {
       manuallyEditCover(element);
+      assignNewCoverID();
     });
   });
 };
 
 // Create your event handlers and other functions here 👇
+
+function assignNewCoverID() {
+  currentCover.id = Date.now();
+}
 
 function getRandomImage() {
   var randomIndex = getRandomIndex(covers);
@@ -115,7 +121,7 @@ function makeCoverButton() {
 }
 
 function saveCover() {
-  if (!savedCovers.includes(currentCover)) {
+  if (!savedCoverIDs.includes(currentCover.id)) {
     savedCovers.push(currentCover);
   } else {
     alert('Already Saved!✅')
@@ -243,15 +249,20 @@ function manuallyEditCover(element) {
 }
 
 function getNewRandomCoverItem(element) {
-  console.log(element);
   if(element.tagName === "IMG") {
-    coverImage.src = getRandomImage();
+    var newRandomImage = getRandomImage();
+    coverImage.src = newRandomImage; 
+    currentCover.coverImg = newRandomImage;
   } else if(element.tagName === "H2") {
-    coverTitle.innerText = getRandomTitle();
+    var newRandomTitle = getRandomTitle();
+    coverTitle.innerText = newRandomTitle;
+    currentCover.title = newRandomTitle;
   } else if(element.tagName === "H3") {
     var desc1 = getRandomDesc();
     var desc2 = getRandomDesc();
     coverDescriptor1.innerText = desc1;
+    currentCover.tagline1 = desc1;
     coverDescriptor2.innerText = desc2;
+    currentCover.tagline2 = desc2;
   }
 }
