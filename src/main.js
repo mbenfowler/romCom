@@ -2,6 +2,7 @@
 var fullCover = document.querySelector(".main-cover");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
+var coverTagline = document.querySelector(".tagline");
 var coverDescriptor1 = document.querySelector(".tagline-1");
 var coverDescriptor2 = document.querySelector(".tagline-2");
 var homeButton = document.querySelector('.home-button');
@@ -29,10 +30,12 @@ var currentView;
 
 // Add your event listeners here 👇
 showNewRandomCoverButton.addEventListener('click', getRandomCover);
+
 viewSavedCoversButton.addEventListener('click', function () {
   currentView = homeView;
   switchToViewSavedCovers(currentView);
 });
+
 saveCoverButton.addEventListener('click', saveCover);
 makeNewButton.addEventListener('click', makeCoverButton);
 homeButton.addEventListener('click', goHome)
@@ -49,9 +52,25 @@ window.onload = (event) => {
   coverTitle.innerHTML = currentCover.title;
   coverDescriptor1.innerHTML = currentCover.tagline1;
   coverDescriptor2.innerHTML = currentCover.tagline2;
+
+  var editableCoverFields = fullCover.querySelectorAll('img.cover-image, h2.cover-title, span.tagline-1, span.tagline-2');
+  editableCoverFields.forEach((element) => {
+    element.addEventListener('click', function () {
+      getNewRandomCoverItem(element);
+      assignNewCoverID();
+    });
+    element.addEventListener('dblclick', function () {
+      manuallyEditCover(element);
+      assignNewCoverID();
+    });
+  });
 };
 
 // Create your event handlers and other functions here 👇
+
+function assignNewCoverID() {
+  currentCover.id = Date.now();
+}
 
 function getRandomImage() {
   var randomIndex = getRandomIndex(covers);
@@ -74,13 +93,12 @@ function getRandomCover() {
     getRandomTitle(), 
     getRandomDesc(), 
     getRandomDesc()
-    );
-  fullCover.innerHTML = `<img class="cover-image" src="${currentCover.coverImg}">
-    <h2 class="cover-title">${currentCover.title}</h2>
-    <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
-    <img class="price-tag" src="./assets/price.png">
-    <img class="overlay" src="./assets/overlay.png">`
-  return currentCover;
+  );
+  
+  coverImage.src = currentCover.coverImg; 
+  coverTitle.innerHTML = currentCover.title;
+  coverDescriptor1.innerHTML = currentCover.tagline1;
+  coverDescriptor2.innerHTML = currentCover.tagline2;
 }
 
 function goHome() {
@@ -105,7 +123,7 @@ function makeCoverButton() {
 }
 
 function saveCover() {
-  if (!savedCovers.includes(currentCover)) {
+  if (!savedCoverIDs.includes(currentCover.id)) {
     savedCovers.push(currentCover);
   } else {
     alert('Already Saved!✅')
@@ -220,4 +238,56 @@ function createCover(imgSrc, title, descriptor1, descriptor2) {
     tagline2: descriptor2
   }
   return cover
+}
+
+function manuallyEditCover(element) {
+  element.contentEditable = true;
+  if(element.tagName === "IMG") {
+    let newImage = prompt("Please enter new URL for cover image:");
+    if(newImage) {
+      element.src = newImage;
+      currentCover.coverImg = newImage;
+    }
+  } else if(element.tagName === "H2") {
+    fullCover.addEventListener('click', function () {
+      updateTitle(element);
+    });
+  } else if(element.tagName === "SPAN") {
+    fullCover.addEventListener('click', function () {
+      updateTagline(element);
+    });
+  }
+}
+
+function updateTitle(element) {
+  var newCoverTitle = document.querySelector(".cover-title");
+  element.innerHTML = newCoverTitle.innerText;
+  currentCover.title = newCoverTitle.innerText;
+}
+
+function updateTagline(element) {
+  var newCoverTagline1 = document.querySelector(".tagline-1");
+  var newCoverTagline2 = document.querySelector(".tagline-2");
+  element.innerHTML = newCoverTagline1.innerText;
+  currentCover.tagline1 = newCoverTagline1.innerText;
+  currentCover.tagline2 = newCoverTagline2.innerText;
+}
+
+function getNewRandomCoverItem(element) {
+  if(element.tagName === "IMG") {
+    var newRandomImage = getRandomImage();
+    coverImage.src = newRandomImage; 
+    currentCover.coverImg = newRandomImage;
+  } else if(element.tagName === "H2") {
+    var newRandomTitle = getRandomTitle();
+    coverTitle.innerText = newRandomTitle;
+    currentCover.title = newRandomTitle;
+  } else if(element.tagName === "SPAN") {
+    var desc1 = getRandomDesc();
+    var desc2 = getRandomDesc();
+    coverDescriptor1.innerText = desc1;
+    currentCover.tagline1 = desc1;
+    coverDescriptor2.innerText = desc2;
+    currentCover.tagline2 = desc2;
+  }
 }
