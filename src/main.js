@@ -209,11 +209,10 @@ function makeBookButton() {
       alert('⚠️Please fill out all fields before continuing! ☺︎')
     } else {
       currentCover = createCover(userCover.value, userTitle.value, userDecr1.value, userDecr2.value);
-      fullCover.innerHTML = `<img class="cover-image" src="${currentCover.coverImg}">
-        <h2 class="cover-title">${currentCover.title}</h2>
-        <h3 class="tagline">A tale of <span class="tagline-1">${currentCover.tagline1}</span> and <span class="tagline-2">${currentCover.tagline2}</span></h3>
-        <img class="price-tag" src="./assets/price.png">
-        <img class="overlay" src="./assets/overlay.png">`;
+      coverImage.src = currentCover.coverImg; 
+      coverTitle.innerHTML = currentCover.title;
+      coverDescriptor1.innerHTML = currentCover.tagline1;
+      coverDescriptor2.innerHTML = currentCover.tagline2;
       saveNewInfo();
       goHome();
     }
