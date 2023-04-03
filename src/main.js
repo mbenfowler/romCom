@@ -129,7 +129,7 @@ function appendCoversToSavedView() {
     let thisCover = savedCovers[i];
     if(savedCoverIDs.includes(thisCover.id)) {
       continue;
-    } 
+    }
 
     savedCoverIDs.push(thisCover.id);
     
