@@ -1,8 +1,6 @@
-// Create variables targetting the relevant DOM elements here 👇
 var fullCover = document.querySelector(".main-cover");
 var coverImage = document.querySelector(".cover-image");
 var coverTitle = document.querySelector(".cover-title");
-var coverTagline = document.querySelector(".tagline");
 var coverDescriptor1 = document.querySelector(".tagline-1");
 var coverDescriptor2 = document.querySelector(".tagline-2");
 var homeButton = document.querySelector('.home-button');
@@ -12,6 +10,7 @@ var viewSavedCoversButton = document.querySelector('.view-saved-button');
 var createBookBtn = document.querySelector('.create-new-book-button');
 var homeView = document.querySelector('.home-view');
 var savedView = document.querySelector('.saved-view');
+var savedCoversSection = document.querySelector('.saved-covers-section');
 var makeNewButton = document.querySelector('.make-new-button');
 var formView = document.querySelector('.form-view');
 var userCover = document.querySelector('.user-cover');
@@ -19,23 +18,13 @@ var userTitle = document.querySelector('.user-title');
 var userDecr1 = document.querySelector('.user-desc1');
 var userDecr2 = document.querySelector('.user-desc2');
 
-var savedCoversSection = document.querySelector('.saved-covers-section');
-
-// We've provided a few variables below
 var savedCovers = [
   createCover("http://3.bp.blogspot.com/-iE4p9grvfpQ/VSfZT0vH2UI/AAAAAAAANq8/wwQZssi-V5g/s1600/Do%2BNot%2BForsake%2BMe%2B-%2BImage.jpg", "Sunsets and Sorrows", "sunsets", "sorrows")
 ];
 var currentCover;
-var currentView;
 
-// Add your event listeners here 👇
 showNewRandomCoverButton.addEventListener('click', getRandomCover);
-
-viewSavedCoversButton.addEventListener('click', function () {
-  currentView = homeView;
-  switchToViewSavedCovers(currentView);
-});
-
+viewSavedCoversButton.addEventListener('click', switchToViewSavedCovers);
 saveCoverButton.addEventListener('click', saveCover);
 makeNewButton.addEventListener('click', makeCoverButton);
 homeButton.addEventListener('click', goHome)
@@ -65,8 +54,6 @@ window.onload = (event) => {
     });
   });
 };
-
-// Create your event handlers and other functions here 👇
 
 function assignNewCoverID() {
   currentCover.id = Date.now();
@@ -130,12 +117,11 @@ function saveCover() {
   }
 }
 
-function switchToViewSavedCovers(currentView) {
+function switchToViewSavedCovers() {
   showNewRandomCoverButton.classList.add("hidden");
   saveCoverButton.classList.add("hidden");
-  currentView.classList.add("hidden");
+  homeView.classList.add("hidden");
   formView.classList.add("hidden");
-  
   homeButton.classList.remove("hidden");
   savedView.classList.remove("hidden");
   appendCoversToSavedView();
@@ -188,7 +174,6 @@ function appendCoversToSavedView() {
   }
 }
 
-// MAKE MY BOOK BUTTON //
 createBookBtn.addEventListener("click", function(event){
   event.preventDefault();
   makeBookButton();
@@ -265,20 +250,15 @@ function updateTitle(element) {
 }
 
 function updateTagline(element) {
-  
-  
   if(element.classList.contains("tagline-1")) {
     let newCoverTagline1 = document.querySelector(".tagline-1");
     element.innerHTML = newCoverTagline1.innerText;
     currentCover.tagline1 = newCoverTagline1.innerText;
   } else if(element.classList.contains("tagline-2")) {
-      let newCoverTagline2 = document.querySelector(".tagline-2");
-      element.innerHTML = newCoverTagline2.innerText;
-      currentCover.tagline2 = newCoverTagline2.innerText;
+    let newCoverTagline2 = document.querySelector(".tagline-2");
+    element.innerHTML = newCoverTagline2.innerText;
+    currentCover.tagline2 = newCoverTagline2.innerText;
   }
-
-  
-  
 }
 
 function getNewRandomCoverItem(element) {
@@ -291,11 +271,14 @@ function getNewRandomCoverItem(element) {
     coverTitle.innerText = newRandomTitle;
     currentCover.title = newRandomTitle;
   } else if(element.tagName === "SPAN") {
-    var desc1 = getRandomDesc();
-    var desc2 = getRandomDesc();
-    coverDescriptor1.innerText = desc1;
-    currentCover.tagline1 = desc1;
-    coverDescriptor2.innerText = desc2;
-    currentCover.tagline2 = desc2;
+      if(element.classList.contains("tagline-1")) {
+        var desc1 = getRandomDesc();
+        coverDescriptor1.innerText = desc1;
+        currentCover.tagline1 = desc1;
+      } else if(element.classList.contains("tagline-2")) {
+        var desc2 = getRandomDesc();
+        coverDescriptor2.innerText = desc2;
+        currentCover.tagline2 = desc2;
+      }
   }
 }
