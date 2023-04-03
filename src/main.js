@@ -265,11 +265,20 @@ function updateTitle(element) {
 }
 
 function updateTagline(element) {
-  var newCoverTagline1 = document.querySelector(".tagline-1");
-  var newCoverTagline2 = document.querySelector(".tagline-2");
-  element.innerHTML = newCoverTagline1.innerText;
-  currentCover.tagline1 = newCoverTagline1.innerText;
-  currentCover.tagline2 = newCoverTagline2.innerText;
+  
+  
+  if(element.classList.contains("tagline-1")) {
+    let newCoverTagline1 = document.querySelector(".tagline-1");
+    element.innerHTML = newCoverTagline1.innerText;
+    currentCover.tagline1 = newCoverTagline1.innerText;
+  } else if(element.classList.contains("tagline-2")) {
+      let newCoverTagline2 = document.querySelector(".tagline-2");
+      element.innerHTML = newCoverTagline2.innerText;
+      currentCover.tagline2 = newCoverTagline2.innerText;
+  }
+
+  
+  
 }
 
 function getNewRandomCoverItem(element) {
