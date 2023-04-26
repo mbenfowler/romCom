@@ -1,4 +1,5 @@
-# RomCom  
+# RomCom
+Visit site here: https://mbenfowler.github.io/romCom/
 
 ### Abstract:
 There's not enough romance novels in the world! We have created a random generator webapp to satisfy this market need. 
@@ -10,7 +11,7 @@ There's not enough romance novels in the world! We have created a random generat
 
 ### Installation Instructions:
 Interested in developing more on this webapp? Here are the steps to get started:
-1. Go to your terminal and `git clone git@github.com:CaliHam/romcom.git`
+1. Go to your terminal and `git clone git@github.com:mbenfowler/romCom.git`
 2. Open the webapp locally by `open index.html`
 
 ### Preview of App:
